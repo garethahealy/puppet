@@ -36,6 +36,11 @@ class jboss-fuse {
         	mode   => "0755"
 	}
 
+	#Install sshpass, which is used by the karaf install scripts
+	package { "sshpass":
+  		ensure  => installed
+	}
+
 	#Unzip fuse
 	exec { "unzip ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}":
     		cwd 	=> "${RH_HOME}",

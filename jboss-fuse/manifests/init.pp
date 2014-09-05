@@ -35,16 +35,17 @@ class jboss-fuse {
         	group  => "${USER_USERNAME}",
         	mode   => "0755"
 	}
-	
-	#Unzip fuse 
+
+	#Unzip fuse
 	exec { "unzip ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}":
     		cwd 	=> "${RH_HOME}",
     		creates => "${RH_HOME}/${FUSE_FILENAME}/bin/fuse",
 		path    => ["/usr/bin", "/usr/sbin"],
 		user	=> "${USER_USERNAME}",
-		require => File["${RH_HOME}"]
+		logoutput => "true",
+		onlyif	=> "/usr/bin/test -e ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}"
   	}
-	
+
 	#Append the default user
 	file_line { "users.properties":
 		ensure	=> present,

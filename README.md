@@ -6,6 +6,7 @@ Puppet (http://puppetlabs.com/) module to install JBoss Fuse (http://www.jboss.o
 Example commands
 ======
 sudo puppet apply --noop /etc/puppet/modules/jboss-fuse/tests/init.pp
+
 sudo puppet apply /etc/puppet/modules/jboss-fuse/tests/init.pp
 
 

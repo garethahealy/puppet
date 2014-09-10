@@ -13,6 +13,8 @@ class jboss-fuse {
 
 	$USER_USERNAME = "jbossfuse"
 
+	$FUSE_SETUP_SCRIPTS_HOME="/home/gahealy/jboss-studio-workspace/jboss-fuse-setup"
+
 	#Create fuse group
 	group { "${USER_USERNAME}":
 		ensure  => present,
@@ -38,7 +40,8 @@ class jboss-fuse {
 
 	#Install sshpass, which is used by the karaf install scripts
 	package { "sshpass":
-  		ensure  => installed
+  		ensure  => installed,
+		allow_virtual => true
 	}
 
 	#Unzip fuse
@@ -58,4 +61,11 @@ class jboss-fuse {
 		line 	=> "\n${DEFAULT_FUSE_USERNAME}=${DEFAULT_FUSE_PASSWORD},admin",
 		require	=> Exec["unzip ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}"]
 	}
+
+	#Create fuse enviroment
+        exec { "sh ${FUSE_SETUP_SCRIPTS_HOME}/run.sh":
+                path    => ["/usr/bin", "/bin"],
+                user    => "${USER_USERNAME}",
+                logoutput => "true"
+        }
 }

@@ -6,7 +6,7 @@ class jboss-fuse {
 	
 	$FUSE_FILENAME_ZIP = "jboss-fuse-full-6.1.0.redhat-379.zip"
 	$FUSE_FILENAME = "jboss-fuse-6.1.0.redhat-379"
-	$RH_HOME = "/opt/rh1"
+	$RH_HOME = "/opt/rh"
 
 	$DEFAULT_FUSE_USERNAME = "admin"
 	$DEFAULT_FUSE_PASSWORD = "admin"

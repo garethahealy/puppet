@@ -24,11 +24,22 @@ class jboss-fuse {
 
 	#Create fuse user
 	user { "${USER_USERNAME}":
-      		ensure	=> present,
-		name	=> "${USER_USERNAME}",
-      		gid     => "${USER_USERNAME}",
-		system	=> true
+      		ensure	    => present,
+		name	    => "${USER_USERNAME}",
+      		gid	    => "${USER_USERNAME}",
+		home        => "/home/${USER_USERNAME}",
+    		system      => true,
+    		managehome  => true,
+    		comment     => "foo"
     	}
+
+	#Create home directory for ${USER_USERNAME} 
+        file { ["/home/${USER_USERNAME}"]:
+                ensure => "directory",
+                owner  => "${USER_USERNAME}",
+                group  => "${USER_USERNAME}",
+                mode   => "0700"
+        }
 	
 	#Create root directory for JBoss-Fuse 
 	file { ["${RH_HOME}"]:
@@ -46,12 +57,12 @@ class jboss-fuse {
 
 	#Unzip fuse
 	exec { "unzip ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}":
-    		cwd 	=> "${RH_HOME}",
-    		creates => "${RH_HOME}/${FUSE_FILENAME}/bin/fuse",
-		path    => ["/usr/bin", "/usr/sbin"],
-		user	=> "${USER_USERNAME}",
+    		cwd 	  => "${RH_HOME}",
+    		creates   => "${RH_HOME}/${FUSE_FILENAME}/bin/fuse",
+		path      => ["/usr/bin", "/usr/sbin"],
+		user	  => "${USER_USERNAME}",
 		logoutput => "true",
-		onlyif	=> "/usr/bin/test -e ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}"
+		onlyif	  => "/usr/bin/test -e ${PUPPET_MODULES_HOME}/jboss-fuse/files/${FUSE_FILENAME_ZIP}"
   	}
 
 	#Append the default user
@@ -64,8 +75,8 @@ class jboss-fuse {
 
 	#Create fuse enviroment
         exec { "sh ${FUSE_SETUP_SCRIPTS_HOME}/run.sh":
-                path    => ["/usr/bin", "/bin"],
-                user    => "${USER_USERNAME}",
+                path      => ["/usr/bin", "/bin"],
+                user      => "${USER_USERNAME}",
                 logoutput => "true"
         }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.garethahealy.puppet</groupId>
+        <artifactId>puppet-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <artifactId>jbossfuse621</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>GarethHealy :: Puppet :: JBoss Fuse 6.2.1</name>
+
+    <properties>
+        <license.skipDownloadLicenses>true</license.skipDownloadLicenses>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>dependencies</id>
+            <dependencies>
+                <!-- Fuse -->
+                <dependency>
+                    <groupId>org.jboss.fuse</groupId>
+                    <artifactId>jboss-fuse-full</artifactId>
+                    <version>6.2.1.redhat-084</version>
+                    <type>zip</type>
+                </dependency>
+
+                <!-- Fuse scaffolding scripts -->
+                <dependency>
+                    <groupId>com.garethahealy.jboss-fuse-setup</groupId>
+                    <artifactId>scaffolding-scripts</artifactId>
+                    <version>1.0.3</version>
+                    <classifier>all</classifier>
+                    <type>zip</type>
+                </dependency>
+            </dependencies>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-dependencies</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/files</outputDirectory>
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                    <overWriteIfNewer>true</overWriteIfNewer>
+                                    <excludeTransitive>true</excludeTransitive>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>

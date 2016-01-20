@@ -1,0 +1,14 @@
+{
+  "name": "garethahealy-jbossfuse621",
+  "version": "1.0.0",
+  "author": "GarethHealy",
+  "summary": "Install JBoss Fuse 6.2.1",
+  "license": "Apache-2.0",
+  "source": "http://github.com/garethahealy/puppet/",
+  "project_page": "https://github.com/garethahealy/puppet/",
+  "issues_url": "https://github.com/garethahealy/puppet/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+

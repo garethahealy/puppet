@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.garethahealy.poms</groupId>
+        <artifactId>plugins-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath/>
+    </parent>
+    <groupId>com.garethahealy.puppet</groupId>
+    <artifactId>puppet-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>GarethHealy :: Puppet</name>
+
+    <scm>
+        <connection>scm:git:https://github.com/garethahealy/puppet/tree/master</connection>
+        <developerConnection>scm:git:https://github.com/garethahealy/puppet/tree/master</developerConnection>
+        <url>https://github.com/garethahealy/puppet/tree/master</url>
+    </scm>
+
+    <modules>
+        <module>jbossfuse621</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.basedir}/files</directory>
+                            <includes>
+                                <include>**/*.zip</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

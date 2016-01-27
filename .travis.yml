@@ -4,6 +4,7 @@ jdk:
   - openjdk7
   - oraclejdk7
   - oraclejdk8
+script: /bin/true
 cache:
   directories:
   - $HOME/.m2

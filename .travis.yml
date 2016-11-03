@@ -1,8 +1,11 @@
+sudo: required
 dist: trusty
 language: java
 jdk:
   - oraclejdk8
 install:
+  - bash .travis/update.sh
+  - export M2_HOME=/usr/share/maven3 && export PATH=${M2_HOME}/bin:${PATH} && export MAVEN_OPTS="-Xms2048m -Xmx2048m"
   - java -version && javac -version && mvn -version
 before_script:
   - mvn dependency:resolve-plugins dependency:resolve -P\!dependencies

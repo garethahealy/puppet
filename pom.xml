@@ -12,7 +12,7 @@
     <groupId>com.garethahealy.puppet</groupId>
     <artifactId>puppet-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>GarethHealy :: Puppet</name>
 
     <scm>

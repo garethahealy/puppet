@@ -6,12 +6,12 @@
     <parent>
         <groupId>com.garethahealy.puppet</groupId>
         <artifactId>puppet-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>1.0.2</version>
         <relativePath>../</relativePath>
     </parent>
     <artifactId>jbossfuse621</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>GarethHealy :: Puppet :: JBoss Fuse 6.2.1</name>
 
     <properties>
